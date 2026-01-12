@@ -11,16 +11,16 @@ export default function Cart() {
   if (cartItems.length === 0) {
     return (
       <div className="min-h-screen bg-gray-50 flex items-center justify-center px-4">
-        <div className="text-center">
-          <h2 className="text-3xl font-bold text-gray-900 mb-4">
+        <div className="text-center max-w-md mx-auto">
+          <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-4">
             Your Cart is Empty
           </h2>
-          <p className="text-gray-600 mb-6">
+          <p className="text-gray-600 mb-6 text-sm sm:text-base">
             Add some products to get started!
           </p>
           <button
             onClick={() => navigate("/")}
-            className="bg-black text-white px-6 py-3 rounded-md hover:bg-gray-800 transition"
+            className="bg-black text-white px-6 py-3 rounded-md hover:bg-gray-800 transition w-full sm:w-auto"
           >
             Continue Shopping
           </button>
@@ -30,32 +30,38 @@ export default function Cart() {
   }
 
   return (
-    <div className="min-h-screen bg-gray-50 py-12 px-4">
+    <div className="min-h-screen bg-gray-50 py-6 sm:py-12 px-4 sm:px-6 lg:px-8">
       <div className="max-w-4xl mx-auto">
-        <div className="flex justify-between items-center mb-8">
-          <h1 className="text-3xl font-bold text-gray-900">Shopping Cart</h1>
+        {/* Header */}
+        <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-4 mb-6 sm:mb-8">
+          <h1 className="text-2xl sm:text-3xl font-bold text-gray-900">
+            Shopping Cart
+          </h1>
           <button
             onClick={clearCart}
-            className="text-red-600 hover:text-red-700 text-sm font-medium"
+            className="text-red-600 hover:text-red-700 text-sm font-medium text-left sm:text-center"
           >
             Clear Cart
           </button>
         </div>
 
-        <div className="bg-white rounded-lg shadow-md">
+        {/* Cart Items */}
+        <div className="bg-white rounded-lg shadow-md overflow-hidden">
           {cartItems.map((item) => (
             <div
               key={item.id}
-              className="flex items-center gap-4 p-4 border-b border-gray-200 last:border-b-0"
+              className="flex flex-col sm:flex-row sm:items-center gap-4 p-4 border-b border-gray-200 last:border-b-0"
             >
+              {/* Product Image */}
               <img
                 src={item.image}
                 alt={item.title}
-                className="w-20 h-20 object-contain bg-gray-100 rounded"
+                className="w-full sm:w-20 h-40 sm:h-20 object-contain bg-gray-100 rounded"
               />
 
-              <div className="flex-1">
-                <h3 className="font-semibold text-gray-900 mb-1">
+              {/* Product Info */}
+              <div className="flex-1 min-w-0">
+                <h3 className="font-semibold text-gray-900 mb-1 text-sm sm:text-base line-clamp-2">
                   {item.title}
                 </h3>
                 <p className="text-sm text-gray-600">
@@ -63,52 +69,70 @@ export default function Cart() {
                 </p>
               </div>
 
-              <div className="flex items-center gap-2">
-                <button
-                  onClick={() => updateQuantity(item.id, item.quantity - 1)}
-                  className="w-8 h-8 flex items-center justify-center bg-gray-200 hover:bg-gray-300 rounded"
-                >
-                  <Minus className="w-4 h-4" />
-                </button>
-                <span className="w-12 text-center font-medium">
-                  {item.quantity}
-                </span>
-                <button
-                  onClick={() => updateQuantity(item.id, item.quantity + 1)}
-                  className="w-8 h-8 flex items-center justify-center bg-gray-200 hover:bg-gray-300 rounded"
-                >
-                  <Plus className="w-4 h-4" />
-                </button>
-              </div>
+              {/* Mobile Layout: Quantity + Price + Delete */}
+              <div className="flex items-center justify-between sm:contents">
+                {/* Quantity Controls */}
+                <div className="flex items-center gap-2">
+                  <button
+                    onClick={() => updateQuantity(item.id, item.quantity - 1)}
+                    className="w-8 h-8 flex items-center justify-center bg-gray-200 hover:bg-gray-300 rounded transition"
+                    aria-label="Decrease quantity"
+                  >
+                    <Minus className="w-4 h-4" />
+                  </button>
+                  <span className="w-10 sm:w-12 text-center font-medium text-sm sm:text-base">
+                    {item.quantity}
+                  </span>
+                  <button
+                    onClick={() => updateQuantity(item.id, item.quantity + 1)}
+                    className="w-8 h-8 flex items-center justify-center bg-gray-200 hover:bg-gray-300 rounded transition"
+                    aria-label="Increase quantity"
+                  >
+                    <Plus className="w-4 h-4" />
+                  </button>
+                </div>
 
-              <div className="text-right">
-                <p className="font-bold text-gray-900">
-                  ${(item.price * item.quantity).toFixed(2)}
-                </p>
-              </div>
+                {/* Total Price */}
+                <div className="flex items-center gap-3 sm:gap-4">
+                  <p className="font-bold text-gray-900 text-sm sm:text-base">
+                    ${(item.price * item.quantity).toFixed(2)}
+                  </p>
 
-              <button
-                onClick={() => removeFromCart(item.id)}
-                className="text-red-600 hover:text-red-700 p-2"
-              >
-                <Trash2 className="w-5 h-5" />
-              </button>
+                  {/* Delete Button */}
+                  <button
+                    onClick={() => removeFromCart(item.id)}
+                    className="text-red-600 hover:text-red-700 p-2 transition"
+                    aria-label="Remove item"
+                  >
+                    <Trash2 className="w-5 h-5" />
+                  </button>
+                </div>
+              </div>
             </div>
           ))}
         </div>
 
-        <div className="mt-6 bg-white rounded-lg shadow-md p-6">
+        {/* Cart Summary */}
+        <div className="mt-6 bg-white rounded-lg shadow-md p-4 sm:p-6">
           <div className="flex justify-between items-center mb-4">
-            <span className="text-xl font-semibold text-gray-900">Total:</span>
-            <span className="text-2xl font-bold text-gray-900">
+            <span className="text-lg sm:text-xl font-semibold text-gray-900">
+              Total:
+            </span>
+            <span className="text-xl sm:text-2xl font-bold text-gray-900">
               ${getCartTotal().toFixed(2)}
             </span>
           </div>
           <button
             onClick={() => navigate("/checkout")}
-            className="w-full bg-black text-white py-3 rounded-md hover:bg-gray-800 transition font-medium"
+            className="w-full bg-black text-white py-3 rounded-md hover:bg-gray-800 transition font-medium text-sm sm:text-base"
           >
             Proceed to Checkout
+          </button>
+          <button
+            onClick={() => navigate("/")}
+            className="w-full mt-3 bg-gray-200 text-gray-900 py-3 rounded-md hover:bg-gray-300 transition font-medium text-sm sm:text-base"
+          >
+            Continue Shopping
           </button>
         </div>
       </div>
