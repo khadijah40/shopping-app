@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom"; // NEW: For navigation after signup
+import { useNavigate } from "react-router-dom";
+import { API_URL } from "../components/config";
 
 export default function Signup() {
   const [email, setEmail] = useState("");
@@ -27,7 +28,7 @@ export default function Signup() {
 
     try {
       // Make API call to backend
-      const res = await fetch("http://localhost:5000/api/auth/signup", {
+      const res = await fetch(`${API_URL}/api/auth/signup`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email, password }),
@@ -41,7 +42,7 @@ export default function Signup() {
       }
 
       // SUCCESS: Save token to localStorage
-      localStorage.setItem('token', data.token);
+      localStorage.setItem("token", data.token);
 
       // Show success message
       alert("Signup successful! Welcome to Fashion.");
@@ -51,22 +52,21 @@ export default function Signup() {
       setPassword("");
 
       // Redirect to home page
-      navigate('/');
-      
+      navigate("/");
+
       // Reload to update header
       window.location.reload();
-
     } catch (err) {
       // Show error message
       setError(err.message);
-      console.error('Signup error:', err);
+      console.error("Signup error:", err);
     } finally {
       setLoading(false); // Stop loading
     }
   };
 
   const handleLoginClick = () => {
-    navigate('/login'); // Navigate to login page
+    navigate("/login"); // Navigate to login page
   };
 
   return (
