@@ -1,5 +1,6 @@
 import React, { useState, useRef, useEffect } from "react";
 import { X, Sparkles } from "lucide-react";
+import { API_URL } from "./config";
 
 export default function AIButton() {
   const [isOpen, setIsOpen] = useState(false);
@@ -42,17 +43,14 @@ export default function AIButton() {
     }));
 
     try {
-      const response = await fetch(
-        "http://localhost:5000/api/ai/fashion-chat",
-        {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({
-            message: userMessage.content,
-            conversationHistory,
-          }),
-        }
-      );
+      const response = await fetch(`${API_URL}/api/ai/fashion-chat`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          message: userMessage.content,
+          conversationHistory,
+        }),
+      });
 
       const reader = response.body.getReader();
       const decoder = new TextDecoder("utf-8");
@@ -108,7 +106,6 @@ export default function AIButton() {
         <Sparkles className="w-5 h-5 sm:w-6 sm:h-6 group-hover:rotate-6 transition-transform" />
       </button>
 
-      
       {isOpen && (
         <>
           {/* Backdrop for mobile */}

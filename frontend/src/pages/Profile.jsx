@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import { API_URL } from "./config";
 
 export default function Profile() {
   const [user, setUser] = useState(null);
@@ -19,7 +20,7 @@ export default function Profile() {
     }
 
     try {
-      const response = await fetch("http://localhost:5000/api/auth/verify", {
+      const response = await fetch(`${API_URL}/api/auth/verify`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },

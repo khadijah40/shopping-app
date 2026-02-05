@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useCart } from "../context/CartContext";
+import { API_URL } from "./config";
 
 const Header = () => {
   const [scrolled, setScrolled] = useState(false);
@@ -28,7 +29,7 @@ const Header = () => {
     }
 
     try {
-      const response = await fetch("http://localhost:5000/api/auth/verify", {
+      const response = await fetch(`${API_URL}/api/auth/verify`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
