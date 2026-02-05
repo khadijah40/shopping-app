@@ -14,6 +14,8 @@ const app = express();
 app.use(
   cors({
     origin: [
+      "https://shopping-app-ur6c.vercel.app", // Add this
+      "https://shopping-app-ur6c-a5l8r9gfh-khadijah40s-projects.vercel.app", // Add this too
       "https://shopping-app-chi-seven.vercel.app",
       "http://localhost:3000",
       "http://localhost:5173",
