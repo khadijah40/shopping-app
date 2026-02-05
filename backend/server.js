@@ -10,11 +10,11 @@ const fashionChatRoutes = require("./routes/fashionChat");
 
 const app = express();
 
-// Middleware - Updated CORS for production
+// Middleware
 app.use(
   cors({
     origin: [
-      "https://shopping-app-chi-seven.vercel.app", // Your frontend URL
+      "https://shopping-app-chi-seven.vercel.app",
       "http://localhost:3000",
       "http://localhost:5173",
     ],
@@ -37,24 +37,12 @@ app.get("/", (req, res) => {
   res.json({ message: "Fashion App Backend is running!" });
 });
 
-// Test route
 app.get("/api/test", (req, res) => {
   res.json({
     message: "API is working!",
     timestamp: new Date(),
-    env: process.env.NODE_ENV,
   });
 });
 
-// Start server (only for local development)
-const PORT = process.env.PORT || 5000;
-
-// Don't run app.listen() in production (Vercel handles this)
-if (process.env.NODE_ENV !== "production") {
-  app.listen(PORT, () => {
-    console.log(`🚀 Server running on http://localhost:${PORT}`);
-  });
-}
-
-// Export the Express app for Vercel
+// Export for Vercel (IMPORTANT!)
 module.exports = app;
