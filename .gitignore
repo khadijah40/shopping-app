@@ -9,3 +9,6 @@ build/
 *.log
 .DS_Store
 .vscode/
+
+# Local Netlify folder
+.netlify

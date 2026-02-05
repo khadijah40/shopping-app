@@ -13,12 +13,10 @@ export default function AIButton() {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
   };
 
-  // Scroll to bottom when messages change
   useEffect(() => {
     scrollToBottom();
   }, [messages]);
 
-  // Prevent body scroll when chat is open on mobile
   useEffect(() => {
     if (isOpen) {
       document.body.style.overflow = "hidden";
@@ -102,7 +100,6 @@ export default function AIButton() {
 
   return (
     <>
-      {/* Floating Button */}
       <button
         onClick={() => setIsOpen(!isOpen)}
         className="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-50 w-12 h-12 sm:w-14 sm:h-14 bg-yellow-400 hover:bg-yellow-500 text-black rounded-full shadow-lg hover:shadow-2xl transition-all duration-300 hover:scale-110 flex items-center justify-center group"
@@ -111,7 +108,7 @@ export default function AIButton() {
         <Sparkles className="w-5 h-5 sm:w-6 sm:h-6 group-hover:rotate-6 transition-transform" />
       </button>
 
-      {/* Chat Panel - Full Screen on Mobile, Panel on Desktop */}
+      
       {isOpen && (
         <>
           {/* Backdrop for mobile */}
