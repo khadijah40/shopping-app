@@ -44,5 +44,11 @@ app.get("/api/test", (req, res) => {
   });
 });
 
-// Export for Vercel (IMPORTANT!)
+// Start server locally (not on Vercel)
+const PORT = process.env.PORT || 5000;
+app.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`);
+});
+
+// Export for Vercel
 module.exports = app;
