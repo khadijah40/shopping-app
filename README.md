@@ -4,21 +4,6 @@ A full-stack e-commerce shopping application built with React and Node.js. Brows
 
 **Live Demo:** [shopping-app-ur6c.vercel.app](https://shopping-app-ur6c.vercel.app)
 
----
-
-## Table of Contents
-
-- [Features](#features)
-- [Tech Stack](#tech-stack)
-- [Project Structure](#project-structure)
-- [Getting Started](#getting-started)
-  - [Prerequisites](#prerequisites)
-  - [Frontend Setup](#frontend-setup)
-  - [Backend Setup](#backend-setup)
-- [Available Scripts](#available-scripts)
-- [Deployment](#deployment)
-- [Contributing](#contributing)
-- [Author](#author)
 
 ---
 
