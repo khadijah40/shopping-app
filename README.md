@@ -4,6 +4,27 @@ A full-stack e-commerce shopping application built with React and Node.js. Brows
 
 **Live Demo:** [shopping-app-ur6c.vercel.app](https://shopping-app-ur6c.vercel.app)
 
+![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)
+![Node.js](https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=nodedotjs&logoColor=white)
+![Express](https://img.shields.io/badge/Express.js-000000?style=for-the-badge&logo=express&logoColor=white)
+![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)
+![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white)
+![Vercel](https://img.shields.io/badge/Vercel-000000?style=for-the-badge&logo=vercel&logoColor=white)
+
+---
+
+## Table of Contents
+
+- [Features](#features)
+- [Project Structure](#project-structure)
+- [Getting Started](#getting-started)
+  - [Prerequisites](#prerequisites)
+  - [Frontend Setup](#frontend-setup)
+  - [Backend Setup](#backend-setup)
+- [Available Scripts](#available-scripts)
+- [Deployment](#deployment)
+- [Contributing](#contributing)
+- [Author](#author)
 
 ---
 
@@ -14,17 +35,6 @@ A full-stack e-commerce shopping application built with React and Node.js. Brows
 - Responsive design for desktop and mobile
 - RESTful API backend for data management
 - Fast, optimized deployment via Vercel
-
----
-
-## Tech Stack
-
-| Layer           | Technology              |
-|-----------------|-------------------------|
-| Frontend        | React, JavaScript, CSS  |
-| Backend         | Node.js, Express        |
-| Deployment      | Vercel                  |
-| Version Control | Git, GitHub             |
 
 ---
 
